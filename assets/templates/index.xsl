@@ -41,7 +41,7 @@
 
 	<xsl:template match="term" mode="terms_archive">
 		<li id="term-{slug}" class="term term-taxonomy-{taxonomy}">
-			<a href="{permalink}"><xsl:value-of select="name" /> <span class="count"><xsl:value-of select="count" /></span></a>
+			<a href="{permalink}"><xsl:value-of select="name" disable-output-escaping="yes" /> <span class="count"><xsl:value-of select="count" /></span></a>
 		</li>
 	</xsl:template>
 	
