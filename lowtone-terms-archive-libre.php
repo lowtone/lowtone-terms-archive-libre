@@ -84,16 +84,10 @@ namespace lowtone\terms\archive\libre {
 			}
 		));
 
+	// Functions
+
 	function check() {
-		global $wp_query;
-
-		if (!$wp_query->get("lowtone_terms_archive_taxonomy"))
-			return false;
-
-		if (!isset($wp_query->taxonomy))
-			return false;
-
-		return true;
+		return function_exists("lowtone\\terms\\archive\\isTermsArchive") && \lowtone\terms\archive\isTermsArchive();
 	}
 
 }

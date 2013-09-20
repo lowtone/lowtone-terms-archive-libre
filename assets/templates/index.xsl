@@ -12,6 +12,7 @@
 		<xsl:param name="width">two-thirds</xsl:param>
 
 		<section id="main" class="{$width} column">
+			<xsl:call-template name="before_query" />
 			<xsl:choose>
 				<xsl:when test="taxonomy">
 					<xsl:apply-templates select="taxonomy" mode="terms_archive" />
@@ -20,9 +21,12 @@
 					<xsl:apply-templates select="query" />
 				</xsl:otherwise>
 			</xsl:choose>
+			<xsl:call-template name="after_query" />
 		</section>
 	</xsl:template>
 
+
+	<!-- Terms archive -->
 
 	<xsl:template match="taxonomy" mode="terms_archive">
 		<div id="taxonomy-{query_var}" class="taxonomy terms_archive">
@@ -32,12 +36,16 @@
 	</xsl:template>
 
 
+	<!-- Terms -->
+
 	<xsl:template match="terms" mode="terms_archive">
 		<ul class="terms">
 			<xsl:apply-templates select="term" mode="terms_archive" />
 		</ul>
 	</xsl:template>
 
+
+	<!-- Single term -->
 
 	<xsl:template match="term" mode="terms_archive">
 		<li id="term-{slug}" class="term term-taxonomy-{taxonomy}">
